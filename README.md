@@ -1,57 +1,49 @@
 📘 README.md
-# SecurityExample
+# Spring Security Example
 
-A sample Spring Boot project demonstrating **Spring Security** integration with REST APIs.  
-This project covers basic authentication, authorization, and role-based access control.
+This project is a **Spring Boot application** demonstrating the integration of **Spring Security** with simple REST APIs.  
+It shows how to secure endpoints using **role-based access control** and serves as a learning reference for developers.
 
 ---
 
 ## 🚀 Features
 - Spring Boot REST API
-- Spring Security with role-based access
-- Secure endpoints for `User`, `Student`, and `Home`
+- Spring Security with authentication & authorization
+- Role-based access (`USER`, `ADMIN`)
+- Public and protected endpoints
 - Maven build system
-- Configurable with `application.properties`
-
----
-
-## 🛠️ Tech Stack
-- **Java 17+**
-- **Spring Boot 3.x**
-- **Spring Security**
-- **Maven**
-- **REST APIs**
 
 ---
 
 ## 📂 Project Structure
-
-
+```text
 SecurityExample
 ├── src/main/java/com/example/SecurityExample
-│ ├── SecurityExampleApplication.java # Main Spring Boot application
-│ ├── config/SecurityConfig.java # Security configuration
-│ ├── controller/
-│ │ ├── HomeController.java
-│ │ ├── StudentController.java
-│ │ └── UserController.java
-├── pom.xml # Maven configuration
-
-
+│   ├── SecurityExampleApplication.java   # Main Spring Boot application
+│   ├── config/
+│   │   └── SecurityConfig.java           # Security configuration
+│   └── controller/
+│       ├── HomeController.java           # Public endpoint
+│       ├── StudentController.java        # Requires USER/ADMIN
+│       └── UserController.java           # Requires ADMIN
+└── pom.xml                               # Maven configuration
+```
 ---
 
-## ⚙️ Setup & Run
+⚙️ Setup & Run
+Prerequisites
 
-### 1️⃣ Prerequisites
-- Java 17 or later
-- Maven 3.8+
-- IDE (IntelliJ / Eclipse / VS Code)
+Java 17+
 
-### 2️⃣ Build & Run
-```bash
+Maven 3.8+
+
+IDE (IntelliJ, Eclipse, VS Code)
+
+Steps
+```text
 # Clone repository
-git clone https://github.com/your-username/SecurityExample.git
-cd SecurityExample
+git clone https://github.com/sanidhyasakhuja/SpringSecurityExample.git
+cd SpringSecurityExample
 
 # Build project
 mvn clean install
@@ -59,31 +51,46 @@ mvn clean install
 # Run application
 mvn spring-boot:run
 
+```
+The app starts at 👉 http://localhost:8080
 
-The application will start at:
-👉 http://localhost:8080
+---
 
 🔑 API Endpoints
-Endpoint	Method	Access
-/home	GET	Public
-/students	GET	Requires ROLE_USER or ROLE_ADMIN
-/users	GET	Requires ROLE_ADMIN
+
+| Endpoint    | Method | Access Level |
+| ----------- | ------ | ------------ |
+| `/home`     | GET    | Public       |
+| `/students` | GET    | USER, ADMIN  |
+| `/users`    | GET    | ADMIN only   |
+
+---
+
 🛡️ Security
 
-Configured with SecurityConfig.java
+Configured in SecurityConfig.java
 
-Uses in-memory authentication (default)
+In-memory authentication with predefined users
 
-Roles: USER, ADMIN
+Roles supported: USER, ADMIN
 
-Can be extended to use database authentication
+Easily extendable to DB authentication
+
+--- 
 
 🤝 Contribution
 
+Contributions are welcome!
 Feel free to fork this repo, raise issues, and submit PRs.
+
+---
 
 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License
 
+---
+
+
+---
 
